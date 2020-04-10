@@ -10,7 +10,7 @@ public class Service {
     CountryRepository countryRepository;
 
     public void saveCountry() {
-        countryRepository.save(Country.builder().id(2).name("India").build());
+        countryRepository.save(Country.builder().name("India").build());
     }
 
     public String getCountry() {
