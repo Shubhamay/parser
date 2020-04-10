@@ -1,7 +1,5 @@
 package com.example.parser.controller;
 
-import com.example.parser.entity.Country;
-import com.example.parser.repository.CountryRepository;
 import com.example.parser.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +15,13 @@ public class BaseController {
     @RequestMapping("/")
     @ResponseBody
     String home() {
-        return "Hello World!";
+        service.saveCountry();
+        return "1";
+    }
+
+    @RequestMapping("/getCountry")
+    @ResponseBody
+    String getCountry() {
+        return service.getCountry();
     }
 }

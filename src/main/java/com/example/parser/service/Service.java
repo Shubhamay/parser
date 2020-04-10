@@ -12,4 +12,8 @@ public class Service {
     public void saveCountry() {
         countryRepository.save(Country.builder().id(1).name("India").build());
     }
+
+    public String getCountry() {
+        return countryRepository.findAll().toString();
+    }
 }
