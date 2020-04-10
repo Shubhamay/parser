@@ -22,6 +22,6 @@ public class BaseController {
     @RequestMapping("/getCountry")
     @ResponseBody
     String getCountry() {
-        return service.getCountry();
+        return service.getCountry().toString();
     }
 }
