@@ -1,18 +1,25 @@
 package com.example.parser.entity;
 
 import lombok.Builder;
-import lombok.Generated;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 @Builder
-@Document(collection = "countries")
+@Entity(name = "countries")
 public class Country {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+
     String name;
 
     @Override
     public String toString() {
-        return String.format("name= " +name);
+        return String.format("id= " +id + "name= " +name);
     }
 }
