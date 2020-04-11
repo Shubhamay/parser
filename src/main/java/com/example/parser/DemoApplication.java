@@ -8,6 +8,7 @@ import graphql.execution.ExecutionStrategy;
 import graphql.schema.GraphQLSchema;
 import graphql.servlet.GraphQLServlet;
 import graphql.servlet.SimpleGraphQLServlet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -15,15 +16,11 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DemoApplication {
-	@Bean
-	public Query query() {
-		return new Query();
-	}
+	@Autowired
+	private Query query;
 
-	@Bean
-	public Mutation mutation() {
-		return new Mutation();
-	}
+	@Autowired
+	private Mutation mutation;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
@@ -33,8 +30,8 @@ public class DemoApplication {
 	public ServletRegistrationBean servletRegistrationBean() {
 
 		GraphQLSchema schema = SchemaParser.newParser()
-				.resolvers(mutation(),
-						query())
+				.resolvers(mutation,
+						query)
 				.file("graphql/countries.graphqls")
 				.build().makeExecutableSchema();
 		ExecutionStrategy executionStrategy = new AsyncExecutionStrategy();
