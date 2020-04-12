@@ -9,4 +9,6 @@ type Query {
 
 type Mutation {
     newCountry(name: String!) : Country!
+    saveAllCountries(name: [String]!) : [String]!
 }
+
