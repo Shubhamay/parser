@@ -1,6 +1,12 @@
+scalar Date
+
 type Country {
     id: ID!
     name: String!
+}
+
+type Countries {
+    Country: Country
 }
 
 type Query {
@@ -9,6 +15,5 @@ type Query {
 
 type Mutation {
     newCountry(name: String!) : Country!
-    saveAllCountries(name: [String]!) : [String]!
+    saveAllCountries(names: [String!]!): [String]!
 }
-

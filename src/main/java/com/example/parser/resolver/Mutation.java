@@ -21,14 +21,13 @@ public class Mutation implements GraphQLMutationResolver {
         return country;
     }
 
-    public String[] saveAllCountries(String[] names) {
-        List<String> countryCollection = Arrays.asList(names);
-        countryCollection.stream()
-                .map(s -> {
-                    Country country = Country.builder().name(s).build();
-                    return countryRepository.save(country);
-                });
+    public List<String> saveAllCountries(List<String> names) {
+        countryRepository.deleteAll();
 
+        names.stream()
+                .forEach(s -> {
+                    countryRepository.save(Country.builder().name(s).build());
+                });
         return names;
     }
 }
