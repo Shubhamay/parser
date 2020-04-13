@@ -1,5 +1,11 @@
 scalar Date
 
+type State {
+    id: ID!
+    name: String!
+    countryId: ID!
+}
+
 type Country {
     id: ID!
     name: String!
@@ -11,6 +17,7 @@ type Countries {
 
 type Query {
     findAllCountries: [Country]!
+    findAllStates: [State]!
 }
 
 type Mutation {
