@@ -35,7 +35,8 @@ public class DemoApplication {
 				.file("graphql/countries.graphqls")
 				.build().makeExecutableSchema();
 		ExecutionStrategy executionStrategy = new AsyncExecutionStrategy();
-		GraphQLServlet servlet = new SimpleGraphQLServlet(schema, executionStrategy);
+		GraphQLServlet servlet = new SimpleGraphQLServlet(schema);
+
 		ServletRegistrationBean bean = new ServletRegistrationBean(servlet, "/graphql");
 		return bean;
 	}
